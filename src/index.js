@@ -1,5 +1,6 @@
 import React from "react";
 import reactDOM from "react-dom/client";
+import "./index.css";
 
 const pizzaData = [
   {
@@ -40,7 +41,7 @@ const pizzaData = [
 ];
 function App() {
   return (
-    <div>
+    <div className="container">
       <Header />
       <Menu />
       <Footer />
@@ -49,20 +50,35 @@ function App() {
 }
 
 function Header() {
-  return <h1>First React Pizza Co.</h1>;
+  return (
+    <header className="header">
+      <h1>First React Pizza Co.</h1>
+    </header>
+  );
 }
 function Menu() {
   return (
-    <div>
+    <main className="menu">
       <h2>Our Menu</h2>
       <Pizza />
       <Pizza />
       <Pizza />
-    </div>
+    </main>
   );
 }
 function Footer() {
-  return <footer>{new Date().toLocaleTimeString()}We're currently open</footer>;
+  const hour = new Date().getHours();
+  const openHour = 12;
+  const closeHour = 22;
+  const isOpen = hour >= openHour && hour <= closeHour;
+  console.log(isOpen);
+  //   if (hour >= openHour && hour <= closeHour) alert("we are open");
+  //   else alert("closed");
+  return (
+    <footer className="footer">
+      {new Date().toLocaleTimeString()}We're currently open
+    </footer>
+  );
   //   return React.createElement("footer", null, "we are currently open");
 }
 
@@ -71,7 +87,7 @@ function Pizza() {
     <div>
       <img src="pizzas/pizza7.jpg" alt="pizza img" />
       <p>Tomato ,mozarella,spinach and ricotta cheese</p>
-      <h2>Pizza Spinach</h2>
+      <h3>Pizza Spinach</h3>
     </div>
   );
 }
