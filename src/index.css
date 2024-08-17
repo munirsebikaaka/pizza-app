@@ -121,6 +121,9 @@ body {
   align-items: center;
   gap: 2.4rem;
 }
+.pizzas {
+  display: flex;
+}
 .btn {
   color: inherit;
   font-family: inherit;
