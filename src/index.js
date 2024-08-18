@@ -72,33 +72,20 @@ function Menu() {
       {numPizza > 0 && (
         <>
           <p>Codesmann.</p>
-          <ul className="">
+          <ul className="pizzas">
             {pizzas.map(
               (pizza) => pizza && <Pizza pizzaObj={pizza} key={pizza.name} />
             )}
           </ul>
         </>
       )}
-
-      {/* <Pizza
-        name="Pizza Spinach"
-        ingredients="Tomato ,mozarella,spinach and ricotta cheese"
-        photoName="pizzas/pizza7.jpg"
-        price={10}
-      />
-      <Pizza
-        name="Pizza Funghi"
-        ingredients="Tomato ,mashroom"
-        photoName="pizzas/pizza3.jpg"
-        price={12}
-      /> */}
     </main>
   );
 }
 
 function Pizza({ pizzaObj }) {
   return (
-    <li className="pizza s">
+    <li className={`pizza ${pizzaObj.soldOut ? "sold-out" : ""}`}>
       <img src={pizzaObj.photoName} alt={pizzaObj.name} />
       <div>
         <h3>{pizzaObj.name}</h3>
@@ -127,7 +114,6 @@ function Footer() {
       {isOpen && <Order openHour={openHour} />}
     </footer>
   );
-  //   return React.createElement("footer", null, "we are currently open");
 }
 function Order({ openHour }) {
   return (
